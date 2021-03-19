@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Entity // 테이블임을 나타냅니다.
 @Getter
 @Setter
-
 public class Course extends Timestamped{
 
     @Id // ID 값, Primary Key로 사용하겠다는 뜻입니다.

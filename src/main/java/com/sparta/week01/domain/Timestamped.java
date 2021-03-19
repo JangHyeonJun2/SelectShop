@@ -1,5 +1,6 @@
 package com.sparta.week01.domain;
 
+import com.sparta.week01.models.PersonRequestDto;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,4 +18,6 @@ public abstract class Timestamped {
 
     @LastModifiedDate // 마지막 수정일자임을 나타냅니다.
     private LocalDateTime modifiedAt;
+
+
 }

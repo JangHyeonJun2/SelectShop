@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+
 @RestController
 public class CourseController {
 
     private final CourseService courseService;
     private final CourseRepository courseRepository;
+
+    public CourseController(CourseService courseService, CourseRepository courseRepository) {
+        this.courseService = courseService;
+        this.courseRepository = courseRepository;
+    }
 
     @GetMapping("/api/courses")
     public List<Course> getCourses() {
