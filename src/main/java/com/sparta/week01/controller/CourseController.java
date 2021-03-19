@@ -5,10 +5,7 @@ import com.sparta.week01.domain.CourseRepository;
 import com.sparta.week01.models.CourseRequestDto;
 import com.sparta.week01.service.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +35,16 @@ public class CourseController {
 
         // JPA를 이용하여 DB에 저장하고, 그 결과를 반환합니다.
         return courseRepository.save(course);
+    }
+
+    @PutMapping("/api/courses/{id}")
+    public Long updateCourse(@PathVariable Long id, @RequestBody CourseRequestDto requestDto) {
+        return courseService.update(id, requestDto);
+    }
+
+    @DeleteMapping("/api/courses/{id}")
+    public void deleteCourse(@PathVariable Long id) {
+        courseRepository.deleteById(id);
+
     }
 }
