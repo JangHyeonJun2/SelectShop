@@ -23,6 +23,7 @@ public class PersonService {
         Person person = personRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 아이디가 존재 x")
         );
+
         person.update(requestDto);
         return person.getId();
     }
