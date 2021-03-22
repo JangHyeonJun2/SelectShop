@@ -2,6 +2,7 @@ package com.sparta.week01.service;
 
 import com.sparta.week01.domain.Product;
 import com.sparta.week01.domain.ProductRepository;
+import com.sparta.week01.models.ItemDto;
 import com.sparta.week01.models.ProductMypriceRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,5 +23,11 @@ public class ProductService {
 
         product.update(mypriceRequestDto);
     }
+    @Transactional
+    public void updateBySearch(Long id, ItemDto itemDto) {
+        Product findProduct = productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다."));
+        findProduct.updateByItemDto(itemDto);
+    }
+
 
 }

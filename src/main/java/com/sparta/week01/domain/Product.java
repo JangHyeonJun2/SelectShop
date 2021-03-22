@@ -1,5 +1,6 @@
 package com.sparta.week01.domain;
 
+import com.sparta.week01.models.ItemDto;
 import com.sparta.week01.models.ProductMypriceRequestDto;
 import com.sparta.week01.models.ProductRequestDto;
 import lombok.Getter;
@@ -43,5 +44,9 @@ public class Product extends Timestamped{
 
     public void update(ProductMypriceRequestDto mypriceRequestDto) {
         this.myprice = mypriceRequestDto.getMyprice();
+    }
+
+    public void updateByItemDto(ItemDto itemDto) {
+        this.lprice = itemDto.getLprice();
     }
 }
