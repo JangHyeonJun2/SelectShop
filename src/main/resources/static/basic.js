@@ -134,7 +134,6 @@ function showProduct() {
             for (let i = 0; i < response.length; i++) {
                 let product = response[i];
                 let tempHtml = addProductItem(product);
-                console.log(tempHtml);
                 $('#product-container').append(tempHtml);
             }
         }
@@ -176,4 +175,23 @@ function setMyprice() {
      * 5, 성공적으로 등록되었음을 알리는 alert를 띄운다.
      * 6. 창을 새로고침한다. window.location.reload();
      */
+
+    let myprice = $('#myprice').val();
+    if (myprice == '') {
+        alert("최저가를 입력하세요");
+        $('#myprice').focus();
+        return;
+    }
+
+    $.ajax({
+        type: "PUT",
+        url: `/api/products/${targetId}`,
+        data: JSON.stringify({"myprice" : myprice}),
+        contentType: "application/json",
+        success: function(response) {
+            $('#container').removeClass('active');
+            alert("최저가 등록이 완료되었습니다.");
+            window.location.reload();
+        }
+    })
 }
