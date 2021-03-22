@@ -1,8 +1,10 @@
 package com.sparta.week01.models;
 
+import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+@Getter
 public class ItemDto {
     //title, link, image, lprice
     private String title;

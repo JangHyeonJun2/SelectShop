@@ -1,16 +1,16 @@
 package com.sparta.week01.utils;
 
-import com.sparta.week01.domain.Product;
 import com.sparta.week01.models.ItemDto;
-import com.sun.tools.javac.jvm.Items;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.*;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class NaverShopSearch {
     public String search(String query) {
         RestTemplate rest = new RestTemplate();
@@ -20,7 +20,7 @@ public class NaverShopSearch {
         String body = "";
 
         HttpEntity<String> requestEntity = new HttpEntity<String>(body, headers);
-        ResponseEntity<String> responseEntity = rest.exchange("https://openapi.naver.com/v1/search/shop.json?query="+query, HttpMethod.GET, requestEntity, String.class);
+        ResponseEntity<String> responseEntity = rest.exchange("https://openapi.naver.com/v1/search/shop.json?query="+query+"&display=15", HttpMethod.GET, requestEntity, String.class);
         HttpStatus httpStatus = responseEntity.getStatusCode();
         int status = httpStatus.value();
         String response = responseEntity.getBody();
